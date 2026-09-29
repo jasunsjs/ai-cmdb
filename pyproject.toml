@@ -8,15 +8,19 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.141.1",
+    "openai>=3.19.2",
     "pydantic>=2.13.5",
     "pydantic-settings>=2.15.0",
+    "python-multipart>=0.0.32",
     "pyyaml>=6.0.3",
+    "rapidfuzz>=3.14.6",
     "sqlalchemy>=2.1.1",
     "uvicorn[standard]>=0.54.0",
 ]
 
 [project.scripts]
 cmdb-serve = "cmdb.main:run"
+cmdb-demo = "cmdb.demo:main"
 
 [build-system]
 requires = ["uv_build>=0.12.19,<0.13.0"]
@@ -31,6 +35,8 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["live: calls the real OpenRouter API (needs OPENROUTER_API_KEY); run with -m live"]
+addopts = "-m 'not live'"
 
 [tool.ruff]
 line-length = 100
@@ -38,3 +44,6 @@ target-version = "py313"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["cmdb", "fakes"]
