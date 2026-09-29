@@ -1,0 +1,26 @@
+{
+  "sample_file": "sample_hardware.json",
+  "fingerprint": "105d8adc9cdf19d8dcbfe61fb9abf0dc2e18bfe69ea3a50347de7bf9332274c0",
+  "record_path": "",
+  "spec": {
+    "ci_type": "device",
+    "fields": {
+      "asset_tag": "device_id",
+      "hostname": "hostname",
+      "os": "os",
+      "ip_address": "ip_address",
+      "last_seen": "last_checkin",
+      "location": "location",
+      "status": "status"
+    },
+    "related": [
+      {
+        "relation": "owner",
+        "fields": {
+          "name": "assigned_to"
+        }
+      }
+    ],
+    "observed_at": "last_checkin"
+  }
+}

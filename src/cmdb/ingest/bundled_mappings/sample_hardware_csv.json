@@ -1,0 +1,31 @@
+{
+  "sample_file": "sample_hardware.csv",
+  "fingerprint": "d6c06c3d7da42a6e9d20ba1f58b95e7289c9b6dea68d0d72a05b03d1b4c80559",
+  "record_path": "",
+  "spec": {
+    "ci_type": "device",
+    "fields": {
+      "asset_tag": "device_id",
+      "hostname": "hostname",
+      "os": "os",
+      "ip_address": "ip_address",
+      "mac_address": "mac_address",
+      "last_seen": "last_checkin",
+      "location": "location",
+      "encryption_enabled": "encryption_status",
+      "status": "status",
+      "device_type": "device_type",
+      "serial_number": "serial_number"
+    },
+    "related": [
+      {
+        "relation": "owner",
+        "fields": {
+          "name": "assigned_to",
+          "department": "department"
+        }
+      }
+    ],
+    "observed_at": "last_checkin"
+  }
+}

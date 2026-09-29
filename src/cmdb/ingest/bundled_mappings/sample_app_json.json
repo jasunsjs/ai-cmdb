@@ -1,0 +1,27 @@
+{
+  "sample_file": "sample_app.json",
+  "fingerprint": "b1401fa91791e9434aac56876a4bb09a9bc413374a108bc469dbff75add05a29",
+  "record_path": "applications",
+  "spec": {
+    "ci_type": "app",
+    "fields": {
+      "external_id": "app_id",
+      "name": "name",
+      "vendor": "vendor",
+      "app_type": "app_type",
+      "category": "category",
+      "owner_team": "owner",
+      "reported_usage_count": "users_count",
+      "sso_enabled": "sso_enabled"
+    },
+    "related": [
+      {
+        "relation": "integrations",
+        "fields": {
+          "name": "integrations"
+        }
+      }
+    ],
+    "source_system": "saas_inventory"
+  }
+}

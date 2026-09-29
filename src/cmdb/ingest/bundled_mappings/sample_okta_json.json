@@ -1,0 +1,26 @@
+{
+  "sample_file": "sample_okta.json",
+  "fingerprint": "d536d2091d40f47933f61238ae61cbe6d6225e004c73b85472db08d3aac80e6c",
+  "record_path": "",
+  "spec": {
+    "ci_type": "user",
+    "fields": {
+      "external_id": "user_id",
+      "name": "name",
+      "email": "email",
+      "groups": "groups",
+      "mfa_enabled": "mfa_enabled",
+      "last_login": "last_login",
+      "status": "status"
+    },
+    "related": [
+      {
+        "relation": "apps",
+        "fields": {
+          "name": "apps"
+        }
+      }
+    ],
+    "source_system": "okta"
+  }
+}

@@ -8,6 +8,7 @@ mappings are validated against them.
 
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
+from datetime import datetime
 from enum import StrEnum
 from typing import Any
 
@@ -230,6 +231,53 @@ def normalize_record(ci_type: CIType, values: Mapping[str, Any]) -> NormalizedRe
         if "name" not in result.values and "hostname" in result.values:
             result.values["name"] = result.values["hostname"]
     return result
+
+
+def set_field(record: NormalizedRecord, field_name: str, value: Any) -> None:
+    """Apply a value resolved after normalization (e.g. classified by the LLM).
+
+    `value` must already be normalized; for "os" it is an (os_family, os_version) pair.
+    The field's `unrecognized` entry is removed either way.
+    """
+    record.unrecognized = [(f, raw) for f, raw in record.unrecognized if f != field_name]
+    if value is None:
+        return
+    if field_name == "os":
+        family, version = value
+        if family is not None:
+            record.values["os_family"] = family
+        if version is not None:
+            record.values["os_version"] = version
+        return
+    spec = CANONICAL_FIELDS[record.ci_type][field_name]
+    if spec.identifier is not None:
+        identifier = normalize_identifier(spec.identifier, value)
+        if identifier is not None and (spec.identifier, identifier) not in record.identifiers:
+            record.identifiers.append((spec.identifier, identifier))
+    if spec.stored:
+        record.values[field_name] = value
+
+
+def to_jsonable(record: NormalizedRecord) -> dict[str, Any]:
+    """A JSON-safe dump of a normalized record (for source_records.normalized)."""
+    return {
+        "ci_type": record.ci_type.value,
+        "values": {key: jsonable_value(value) for key, value in record.values.items()},
+        "identifiers": [[kind.value, value] for kind, value in record.identifiers],
+        "relations": {
+            name: [to_jsonable(related) for related in items]
+            for name, items in record.relations.items()
+        },
+        "unrecognized": [[name, raw] for name, raw in record.unrecognized],
+    }
+
+
+def jsonable_value(value: Any) -> Any:
+    if isinstance(value, datetime):
+        return value.isoformat()
+    if isinstance(value, StrEnum):
+        return value.value
+    return value
 
 
 def _add_os(result: NormalizedRecord, os_inputs: dict[str, str]) -> None:

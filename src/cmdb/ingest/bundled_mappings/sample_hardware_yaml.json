@@ -1,0 +1,36 @@
+{
+  "sample_file": "sample_hardware.yaml",
+  "fingerprint": "f7e218178c606831b49c69689ec3978160bbd2200be9fdeca605b6a2ecbb6936",
+  "record_path": "inventory.devices",
+  "spec": {
+    "ci_type": "device",
+    "fields": {
+      "asset_tag": "device_id",
+      "hostname": "hostname",
+      "device_type": "type",
+      "serial_number": "hardware.serial_number",
+      "ip_address": "network.primary_ip",
+      "mac_address": "network.mac_address",
+      "os_name": "operating_system.name",
+      "os_version": "operating_system.version",
+      "encryption_enabled": "security.encryption_enabled",
+      "location": "location.site",
+      "status": "status.operational_status",
+      "last_seen": "status.last_checkin"
+    },
+    "related": [
+      {
+        "relation": "owner",
+        "fields": {
+          "name": "assigned_to.name",
+          "email": "assigned_to.email",
+          "employee_id": "assigned_to.employee_id",
+          "department": "assigned_to.department",
+          "team": "assigned_to.team"
+        }
+      }
+    ],
+    "observed_at": "status.last_checkin",
+    "source_system": "it_asset_management"
+  }
+}
