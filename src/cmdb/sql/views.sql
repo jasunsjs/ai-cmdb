@@ -1,6 +1,8 @@
 -- Denormalized, read-only views over the CI model. These are the tables the /ask
 -- text-to-SQL step queries, so column names are chosen to be self-explanatory.
 -- Recreated on every startup by cmdb.db.init_db().
+-- `attributes` is the JSON object of source fields without a typed column (cost, contract
+-- dates, hardware specs, ...); /ask tells the LLM which keys exist.
 
 DROP VIEW IF EXISTS v_devices;
 DROP VIEW IF EXISTS v_users;
@@ -26,7 +28,8 @@ SELECT
     d.last_seen            AS last_seen,
     owner.id               AS owner_id,
     owner.name             AS owner_name,
-    owner_user.email       AS owner_email
+    owner_user.email       AS owner_email,
+    ci.attributes          AS attributes
 FROM configuration_items AS ci
 JOIN devices AS d ON d.ci_id = ci.id
 LEFT JOIN relationships AS r ON r.target_ci_id = ci.id AND r.rel_type = 'OWNS'
@@ -48,7 +51,8 @@ SELECT
     (SELECT COUNT(*) FROM relationships r
       WHERE r.source_ci_id = ci.id AND r.rel_type = 'USES') AS app_count,
     (SELECT COUNT(*) FROM relationships r
-      WHERE r.source_ci_id = ci.id AND r.rel_type = 'OWNS') AS device_count
+      WHERE r.source_ci_id = ci.id AND r.rel_type = 'OWNS') AS device_count,
+    ci.attributes   AS attributes
 FROM configuration_items AS ci
 JOIN users AS u ON u.ci_id = ci.id;
 
@@ -67,7 +71,8 @@ SELECT
     (SELECT COUNT(*) FROM relationships r
       WHERE r.target_ci_id = ci.id AND r.rel_type = 'USES') AS observed_user_count,
     a.sso_enabled            AS sso_enabled,
-    a.is_stub                AS is_stub
+    a.is_stub                AS is_stub,
+    ci.attributes            AS attributes
 FROM configuration_items AS ci
 JOIN apps AS a ON a.ci_id = ci.id;
 
