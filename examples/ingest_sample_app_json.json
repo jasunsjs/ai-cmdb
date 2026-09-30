@@ -1,0 +1,81 @@
+{
+  "ingestion_id": 2,
+  "status": "completed",
+  "filename": "sample_app.json",
+  "format": "json",
+  "fingerprint": "b1401fa91791e9434aac56876a4bb09a9bc413374a108bc469dbff75add05a29",
+  "ci_type": "app",
+  "mapping_source": "llm",
+  "source_system": "saas_management",
+  "records": 6,
+  "cis": {
+    "app": {
+      "created": 13,
+      "updated": 3,
+      "unchanged": 1
+    }
+  },
+  "relationships_created": {
+    "INTEGRATES_WITH": 16
+  },
+  "ai_decisions": [
+    {
+      "type": "schema_mapping",
+      "fingerprint": "b1401fa91791e9434aac56876a4bb09a9bc413374a108bc469dbff75add05a29",
+      "ci_type": "app",
+      "fields": {
+        "name": "name",
+        "vendor": "vendor",
+        "app_type": "app_type",
+        "category": "category",
+        "owner_team": "owner",
+        "reported_usage_count": "users_count",
+        "sso_enabled": "sso_enabled",
+        "external_id": "app_id"
+      },
+      "related": [
+        {
+          "relation": "integrations",
+          "fields": {
+            "name": "integrations"
+          }
+        }
+      ],
+      "observed_at": null,
+      "source_system": "saas_management"
+    },
+    {
+      "type": "entity_match",
+      "ci_type": "app",
+      "incoming": "GitHub Enterprise",
+      "candidates": [
+        {
+          "id": 2,
+          "name": "GitHub"
+        }
+      ],
+      "matched_id": 2,
+      "matched": "GitHub",
+      "confidence": 0.85,
+      "accepted": true,
+      "reason": "GitHub Enterprise is a product variant of GitHub with consistent vendor and category, though the incoming record has more complete details than the stub candidate."
+    },
+    {
+      "type": "entity_match",
+      "ci_type": "app",
+      "incoming": "Salesforce CRM",
+      "candidates": [
+        {
+          "id": 5,
+          "name": "Salesforce"
+        }
+      ],
+      "matched_id": 5,
+      "matched": "Salesforce",
+      "confidence": 0.85,
+      "accepted": true,
+      "reason": "Same vendor and core product (Salesforce), with 'CRM' being a common product suffix; stub status suggests this is a placeholder that should be enriched with the incoming detailed record."
+    }
+  ],
+  "warnings": []
+}

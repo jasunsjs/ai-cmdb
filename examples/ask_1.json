@@ -1,0 +1,25 @@
+{
+  "question": "Which users don't have MFA?",
+  "answer": "Three users don't have MFA enabled: Alex Johnson (a.johnson.contractor@example.com), Carlos S. (c.santos@example.com), and Michael Brown (m.brown@example.com).",
+  "sql": "SELECT name, email FROM v_users WHERE mfa_enabled = 0 ORDER BY name",
+  "columns": [
+    "name",
+    "email"
+  ],
+  "rows": [
+    {
+      "name": "Alex Johnson",
+      "email": "a.johnson.contractor@example.com"
+    },
+    {
+      "name": "Carlos S.",
+      "email": "c.santos@example.com"
+    },
+    {
+      "name": "Michael Brown",
+      "email": "m.brown@example.com"
+    }
+  ],
+  "row_count": 3,
+  "truncated": false
+}

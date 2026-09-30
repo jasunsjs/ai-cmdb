@@ -1,0 +1,25 @@
+{
+  "question": "Which apps have the highest annual cost?",
+  "answer": "The apps with the highest annual costs are: Salesforce CRM ($45,000), Slack ($24,000), and GitHub Enterprise ($18,000).",
+  "sql": "SELECT name, CAST(json_extract(attributes, '$.' || '\"annual_cost_usd\"') AS REAL) AS annual_cost_usd FROM v_apps WHERE json_extract(attributes, '$.' || '\"annual_cost_usd\"') IS NOT NULL ORDER BY annual_cost_usd DESC",
+  "columns": [
+    "name",
+    "annual_cost_usd"
+  ],
+  "rows": [
+    {
+      "name": "Salesforce CRM",
+      "annual_cost_usd": 45000.0
+    },
+    {
+      "name": "Slack",
+      "annual_cost_usd": 24000.0
+    },
+    {
+      "name": "GitHub Enterprise",
+      "annual_cost_usd": 18000.0
+    }
+  ],
+  "row_count": 3,
+  "truncated": false
+}

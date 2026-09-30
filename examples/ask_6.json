@@ -1,0 +1,33 @@
+{
+  "question": "Which users use GitHub?",
+  "answer": "Five users use GitHub: Alex Johnson (a.johnson.contractor@example.com), Jane Doe (jane.doe@example.com), John Doe (john.doe@example.com), Lisa Park (l.park@example.com), and Sarah Chen (sarah.chen@example.com).",
+  "sql": "SELECT DISTINCT u.name, u.email FROM v_user_apps AS ua JOIN v_users AS u ON ua.user_id = u.user_id WHERE ua.app_name LIKE '%github%' ORDER BY u.name",
+  "columns": [
+    "name",
+    "email"
+  ],
+  "rows": [
+    {
+      "name": "Alex Johnson",
+      "email": "a.johnson.contractor@example.com"
+    },
+    {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com"
+    },
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    },
+    {
+      "name": "Lisa Park",
+      "email": "l.park@example.com"
+    },
+    {
+      "name": "Sarah Chen",
+      "email": "sarah.chen@example.com"
+    }
+  ],
+  "row_count": 5,
+  "truncated": false
+}

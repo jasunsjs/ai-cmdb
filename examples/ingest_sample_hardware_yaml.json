@@ -1,0 +1,61 @@
+{
+  "ingestion_id": 5,
+  "status": "completed",
+  "filename": "sample_hardware.yaml",
+  "format": "yaml",
+  "fingerprint": "f7e218178c606831b49c69689ec3978160bbd2200be9fdeca605b6a2ecbb6936",
+  "ci_type": "device",
+  "mapping_source": "llm",
+  "source_system": "hardware_inventory",
+  "records": 3,
+  "cis": {
+    "device": {
+      "created": 0,
+      "updated": 3,
+      "unchanged": 0
+    },
+    "user": {
+      "created": 0,
+      "updated": 3,
+      "unchanged": 0
+    }
+  },
+  "relationships_created": {},
+  "ai_decisions": [
+    {
+      "type": "schema_mapping",
+      "fingerprint": "f7e218178c606831b49c69689ec3978160bbd2200be9fdeca605b6a2ecbb6936",
+      "ci_type": "device",
+      "fields": {
+        "hostname": "hostname",
+        "name": "hostname",
+        "ip_address": "network.primary_ip",
+        "mac_address": "network.mac_address",
+        "os": "operating_system.name",
+        "os_version": "operating_system.version",
+        "location": "location.site",
+        "encryption_enabled": "security.encryption_enabled",
+        "device_type": "type",
+        "serial_number": "hardware.serial_number",
+        "last_seen": "status.last_checkin",
+        "status": "status.operational_status",
+        "asset_tag": "device_id"
+      },
+      "related": [
+        {
+          "relation": "owner",
+          "fields": {
+            "name": "assigned_to.name",
+            "email": "assigned_to.email",
+            "employee_id": "assigned_to.employee_id",
+            "department": "assigned_to.department",
+            "team": "assigned_to.team"
+          }
+        }
+      ],
+      "observed_at": "status.last_checkin",
+      "source_system": "hardware_inventory"
+    }
+  ],
+  "warnings": []
+}

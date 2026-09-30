@@ -1,0 +1,74 @@
+{
+  "ingestion_id": 3,
+  "status": "completed",
+  "filename": "sample_hardware.csv",
+  "format": "csv",
+  "fingerprint": "d6c06c3d7da42a6e9d20ba1f58b95e7289c9b6dea68d0d72a05b03d1b4c80559",
+  "ci_type": "device",
+  "mapping_source": "llm",
+  "source_system": null,
+  "records": 3,
+  "cis": {
+    "device": {
+      "created": 3,
+      "updated": 0,
+      "unchanged": 0
+    },
+    "user": {
+      "created": 0,
+      "updated": 3,
+      "unchanged": 0
+    }
+  },
+  "relationships_created": {
+    "OWNS": 3
+  },
+  "ai_decisions": [
+    {
+      "type": "schema_mapping",
+      "fingerprint": "d6c06c3d7da42a6e9d20ba1f58b95e7289c9b6dea68d0d72a05b03d1b4c80559",
+      "ci_type": "device",
+      "fields": {
+        "hostname": "hostname",
+        "ip_address": "ip_address",
+        "mac_address": "mac_address",
+        "os": "os",
+        "location": "location",
+        "encryption_enabled": "encryption_status",
+        "device_type": "device_type",
+        "serial_number": "serial_number",
+        "last_seen": "last_checkin",
+        "status": "status",
+        "asset_tag": "device_id"
+      },
+      "related": [
+        {
+          "relation": "owner",
+          "fields": {
+            "name": "assigned_to",
+            "department": "department"
+          }
+        }
+      ],
+      "observed_at": "last_checkin",
+      "source_system": null
+    },
+    {
+      "type": "entity_match",
+      "ci_type": "user",
+      "incoming": "John D.",
+      "candidates": [
+        {
+          "id": 1,
+          "name": "John Doe"
+        }
+      ],
+      "matched_id": 1,
+      "matched": "John Doe",
+      "confidence": 0.92,
+      "accepted": true,
+      "reason": "Name abbreviation 'John D.' matches 'John Doe' with consistent Engineering department and active status."
+    }
+  ],
+  "warnings": []
+}

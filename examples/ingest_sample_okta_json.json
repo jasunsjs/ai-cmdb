@@ -1,0 +1,53 @@
+{
+  "ingestion_id": 1,
+  "status": "completed",
+  "filename": "sample_okta.json",
+  "format": "json",
+  "fingerprint": "d536d2091d40f47933f61238ae61cbe6d6225e004c73b85472db08d3aac80e6c",
+  "ci_type": "user",
+  "mapping_source": "llm",
+  "source_system": "okta",
+  "records": 9,
+  "cis": {
+    "user": {
+      "created": 9,
+      "updated": 0,
+      "unchanged": 0
+    },
+    "app": {
+      "created": 15,
+      "updated": 0,
+      "unchanged": 0
+    }
+  },
+  "relationships_created": {
+    "USES": 25
+  },
+  "ai_decisions": [
+    {
+      "type": "schema_mapping",
+      "fingerprint": "d536d2091d40f47933f61238ae61cbe6d6225e004c73b85472db08d3aac80e6c",
+      "ci_type": "user",
+      "fields": {
+        "name": "name",
+        "email": "email",
+        "groups": "groups",
+        "mfa_enabled": "mfa_enabled",
+        "last_login": "last_login",
+        "status": "status",
+        "external_id": "user_id"
+      },
+      "related": [
+        {
+          "relation": "apps",
+          "fields": {
+            "name": "apps"
+          }
+        }
+      ],
+      "observed_at": null,
+      "source_system": "okta"
+    }
+  ],
+  "warnings": []
+}

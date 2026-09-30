@@ -1,0 +1,183 @@
+{
+  "question": "Compare each app's reported number of users with the users we actually observed.",
+  "answer": "Most apps (20 of 28) lack reported usage data. Among those with reported counts, significant discrepancies exist: Slack shows the largest gap (46 users reported vs. 6 observed), followed by Salesforce CRM (33-user gap), GitHub Enterprise (23-user gap), and Internal HR Portal (55 reported vs. 0 observed). Jenkins CI/CD and PostgreSQL Database also show gaps of 20 and 15 users respectively.",
+  "sql": "SELECT name, reported_usage_count, observed_user_count, (reported_usage_count - observed_user_count) AS difference FROM v_apps ORDER BY name",
+  "columns": [
+    "name",
+    "reported_usage_count",
+    "observed_user_count",
+    "difference"
+  ],
+  "rows": [
+    {
+      "name": "1Password",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "AWS Console",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "Active Directory",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "Adobe Creative Cloud",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "Analytics Platform",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "Backend API",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "DataDog",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "Docker",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "DocuSign",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "Expensify",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "Figma",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "GitHub Enterprise",
+      "reported_usage_count": 28,
+      "observed_user_count": 5,
+      "difference": 23
+    },
+    {
+      "name": "Google Drive",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "Internal HR Portal",
+      "reported_usage_count": 55,
+      "observed_user_count": 0,
+      "difference": 55
+    },
+    {
+      "name": "Jenkins CI/CD",
+      "reported_usage_count": 20,
+      "observed_user_count": 0,
+      "difference": 20
+    },
+    {
+      "name": "Jira",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "Kubernetes",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "LinkedIn Sales Navigator",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "Okta Admin",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "PagerDuty",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "Payroll System",
+      "reported_usage_count": null,
+      "observed_user_count": 0,
+      "difference": null
+    },
+    {
+      "name": "PostgreSQL Database",
+      "reported_usage_count": 15,
+      "observed_user_count": 0,
+      "difference": 15
+    },
+    {
+      "name": "QuickBooks",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "Salesforce CRM",
+      "reported_usage_count": 35,
+      "observed_user_count": 2,
+      "difference": 33
+    },
+    {
+      "name": "Slack",
+      "reported_usage_count": 52,
+      "observed_user_count": 6,
+      "difference": 46
+    },
+    {
+      "name": "Wiz",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "Workday",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    },
+    {
+      "name": "Zoom",
+      "reported_usage_count": null,
+      "observed_user_count": 1,
+      "difference": null
+    }
+  ],
+  "row_count": 28,
+  "truncated": false
+}

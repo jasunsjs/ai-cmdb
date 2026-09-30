@@ -1,0 +1,25 @@
+{
+  "question": "Which devices are inactive?",
+  "answer": "One device is inactive: laptop-jdoe (device ID 38), owned by John Doe (john.doe@example.com) with IP address 10.10.22.5.",
+  "sql": "SELECT device_id, hostname, status, ip_address, owner_name, owner_email FROM v_devices WHERE status = 'inactive' ORDER BY hostname",
+  "columns": [
+    "device_id",
+    "hostname",
+    "status",
+    "ip_address",
+    "owner_name",
+    "owner_email"
+  ],
+  "rows": [
+    {
+      "device_id": 38,
+      "hostname": "laptop-jdoe",
+      "status": "inactive",
+      "ip_address": "10.10.22.5",
+      "owner_name": "John Doe",
+      "owner_email": "john.doe@example.com"
+    }
+  ],
+  "row_count": 1,
+  "truncated": false
+}

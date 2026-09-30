@@ -1,0 +1,27 @@
+{
+  "question": "Which apps integrate with Slack?",
+  "answer": "Five apps integrate with Slack: GitHub Enterprise, Google Drive, Jira, Salesforce CRM, and Zoom.",
+  "sql": "SELECT DISTINCT integrated_app_name FROM v_app_integrations WHERE app_name LIKE '%slack%' ORDER BY integrated_app_name",
+  "columns": [
+    "integrated_app_name"
+  ],
+  "rows": [
+    {
+      "integrated_app_name": "GitHub Enterprise"
+    },
+    {
+      "integrated_app_name": "Google Drive"
+    },
+    {
+      "integrated_app_name": "Jira"
+    },
+    {
+      "integrated_app_name": "Salesforce CRM"
+    },
+    {
+      "integrated_app_name": "Zoom"
+    }
+  ],
+  "row_count": 5,
+  "truncated": false
+}

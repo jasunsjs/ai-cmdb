@@ -1,0 +1,51 @@
+{
+  "ingestion_id": 4,
+  "status": "completed",
+  "filename": "sample_hardware.json",
+  "format": "json",
+  "fingerprint": "105d8adc9cdf19d8dcbfe61fb9abf0dc2e18bfe69ea3a50347de7bf9332274c0",
+  "ci_type": "device",
+  "mapping_source": "llm",
+  "source_system": null,
+  "records": 3,
+  "cis": {
+    "device": {
+      "created": 0,
+      "updated": 0,
+      "unchanged": 3
+    },
+    "user": {
+      "created": 0,
+      "updated": 0,
+      "unchanged": 3
+    }
+  },
+  "relationships_created": {},
+  "ai_decisions": [
+    {
+      "type": "schema_mapping",
+      "fingerprint": "105d8adc9cdf19d8dcbfe61fb9abf0dc2e18bfe69ea3a50347de7bf9332274c0",
+      "ci_type": "device",
+      "fields": {
+        "hostname": "hostname",
+        "ip_address": "ip_address",
+        "os": "os",
+        "location": "location",
+        "status": "status",
+        "asset_tag": "device_id",
+        "last_seen": "last_checkin"
+      },
+      "related": [
+        {
+          "relation": "owner",
+          "fields": {
+            "name": "assigned_to"
+          }
+        }
+      ],
+      "observed_at": "last_checkin",
+      "source_system": null
+    }
+  ],
+  "warnings": []
+}

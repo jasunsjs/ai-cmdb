@@ -1,0 +1,21 @@
+{
+  "question": "Who owns laptop-jdoe and where is it?",
+  "answer": "Laptop-jdoe is owned by John Doe (john.doe@example.com) and is located in London.",
+  "sql": "SELECT hostname, owner_name, owner_email, location FROM v_devices WHERE hostname LIKE '%laptop-jdoe%'",
+  "columns": [
+    "hostname",
+    "owner_name",
+    "owner_email",
+    "location"
+  ],
+  "rows": [
+    {
+      "hostname": "laptop-jdoe",
+      "owner_name": "John Doe",
+      "owner_email": "john.doe@example.com",
+      "location": "London"
+    }
+  ],
+  "row_count": 1,
+  "truncated": false
+}

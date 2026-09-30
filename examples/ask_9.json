@@ -1,0 +1,24 @@
+{
+  "question": "Which apps are hosted in AWS, and are they SaaS or on-prem?",
+  "answer": "Two apps are hosted in AWS (us-east-1): Jenkins CI/CD and PostgreSQL Database. Both are classified as on-prem applications, meaning they are self-hosted instances running on AWS infrastructure rather than SaaS offerings.",
+  "sql": "SELECT name, app_type, json_extract(attributes, '$.' || '\"server_location\"') AS server_location FROM v_apps WHERE json_extract(attributes, '$.' || '\"server_location\"') LIKE '%AWS%' ORDER BY name",
+  "columns": [
+    "name",
+    "app_type",
+    "server_location"
+  ],
+  "rows": [
+    {
+      "name": "Jenkins CI/CD",
+      "app_type": "on_prem",
+      "server_location": "AWS us-east-1"
+    },
+    {
+      "name": "PostgreSQL Database",
+      "app_type": "on_prem",
+      "server_location": "AWS us-east-1"
+    }
+  ],
+  "row_count": 2,
+  "truncated": false
+}

@@ -1,0 +1,18 @@
+{
+  "question": "Which apps don't have SSO?",
+  "answer": "Two apps don't have SSO enabled: Internal HR Portal and PostgreSQL Database.",
+  "sql": "SELECT name FROM v_apps WHERE sso_enabled = 0 ORDER BY name",
+  "columns": [
+    "name"
+  ],
+  "rows": [
+    {
+      "name": "Internal HR Portal"
+    },
+    {
+      "name": "PostgreSQL Database"
+    }
+  ],
+  "row_count": 2,
+  "truncated": false
+}
