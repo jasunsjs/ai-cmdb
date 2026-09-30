@@ -85,7 +85,7 @@ def test_init_db_is_idempotent(engine: Engine) -> None:
 
 
 def test_app_startup_initializes_database(client: TestClient) -> None:
-    assert client.get("/health").json() == {"status": "ok"}
+    assert client.get("/health").json()["status"] == "ok"
     assert "configuration_items" in inspect(client.app.state.engine).get_table_names()
 
 

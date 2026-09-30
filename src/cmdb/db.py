@@ -20,6 +20,8 @@ def create_db_engine(database_url: str) -> Engine:
     if is_sqlite:
         # FastAPI runs sync endpoints in a thread pool, so connections cross threads.
         connect_args["check_same_thread"] = False
+        # SQLite allows one writer at a time; wait for the lock instead of failing at once.
+        connect_args["timeout"] = 30
         if url.database and url.database != ":memory:":
             Path(url.database).parent.mkdir(parents=True, exist_ok=True)
 
